@@ -24,9 +24,7 @@ input.act:active
   transform: scale(0.95);
   box-shadow: none;
 }
-
-
-select.select
+.select
 {
   padding: 5px 10px;
   background: none;
