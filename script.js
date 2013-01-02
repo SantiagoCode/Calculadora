@@ -1,11 +1,12 @@
-var btn_calcular = document.getElementById('btn_calc');
-var cambio = document.getElementById("operador");
-var txt_resultados = document.getElementById('contenedor_resultados');
-var btn_space = document.getElementById("btn_space");
-var operacion = document.getElementById('actualizar');
-var contador = 1;
-var signo = "+";
-var last_value;
+let btn_calcular = document.getElementById('btn_calc');
+let cambio = document.getElementById("operador");
+let tercer_cuadro = document.querySelector(".resultados");
+let txt_resultados;
+let btn_space;
+let operacion = document.getElementById('actualizar');
+let contador = 1;
+let signo = "+";
+let last_value;
 
 btn_calcular.addEventListener("click", calcular);
 cambio.addEventListener("change", actualizar);
@@ -14,17 +15,15 @@ cambio.addEventListener("change", actualizar);
 
 
 // aqui actualizamos los valores de X y Y
-function calcular()
-{
-  var x = parseInt( document.getElementById('x').value );
-  var y = parseInt( document.getElementById('y').value );
+function calcular () {
+  let x = parseInt( document.getElementById('x').value );
+  let y = parseInt( document.getElementById('y').value );
 
   operar(x, y);
 }
 
 // aqui identificamos si es uns suma o resta
-function operar(x, y)
-{
+const operar = (x, y) => {
   switch (cambio.value) {
     case "+":
       var result = x + y;
@@ -46,8 +45,15 @@ function operar(x, y)
 }
 
 // aqui creamos un historial de operaciones
-function historial(x, y, result)
-{
+const historial = (x, y, result) => {
+  if(contador == 1){
+    tercer_cuadro.innerHTML = 
+    "<h2>Resultados: </h2> <p id='contenedor_resultados'></p> <p id='btn_space'></p>";
+
+    txt_resultados = document.getElementById('contenedor_resultados');
+    btn_space = document.getElementById("btn_space");
+  }
+
   txt_resultados.innerHTML +=
   "<strong> Operacion " + contador + ":</strong> <br />" +
   x + " " + cambio.value + " " + y + " = " + result + "<br />";
@@ -57,7 +63,7 @@ function historial(x, y, result)
   contador++;
 
   btn_space.innerHTML =
-  "<button class='select' type='button' name='button'>Usar último valor</button>"
+  "<button class='select act' type='button' name='button'>Usar último valor</button>"
 
   btn_space.addEventListener("click", reusar);
 }
@@ -65,15 +71,13 @@ function historial(x, y, result)
 
 
 // Asi actualizarmos la interfaz
-function actualizar()
-{
+function actualizar () {
   operacion.innerHTML = cambio.value;
 }
 
 
 // asi permitimos continuar el calculo
-function reusar()
-{
+const reusar = () => {
   x.value = parseInt(last_value);
   y.value = 0;
 }
