@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Calculadora</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+
+    <div class="container">
+      <h1 class="titulo_container">
+        Calculadora Simple
+      </h1>
+
+      <label for="calc">
+        Calcula lo que tu quieras:
+      </label>
+
+      <br>
+
+      <input id="x" type="number" value="0">
+      <span class="operador">
+        +
+      </span>
+      <input id="y" type="number" value="0">
+
+      <input id="btn_calc" type="button" name="" value="Calcular">
+
+      <p class="descriptivo">
+        Puedes sumar(+), restar(-), multiplicar(*) y dividir(/) a tu antojo.
+      </p>
+
+      <div class="resultados">
+        <h2 class="titulo_resultados">
+          Resultados:
+        </h2>
+
+        <p class="contenedor_resultados">
+          ...
+        </p>
+      </div>
+
+    </div>
+
+    <script src="script.js" charset="utf-8"></script>
+  </body>
+</html>
